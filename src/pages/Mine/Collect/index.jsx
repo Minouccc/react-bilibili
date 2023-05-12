@@ -1,0 +1,116 @@
+import { Tabs } from "antd-mobile";
+import React, { memo, useEffect, useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import GoodsList from "../../Vip/GoodsList";
+import NewInfiniteScroll from "@/components/InfiniteScroll";
+import ScrollToTop from "@/components/common/scroll-to-top";
+import { empty } from "@/config";
+import { fetchFavorDataAction } from "../../../store/modules/favor";
+import { fetchVipDataAction } from "../../../store/modules/vip";
+import { sleep } from "antd-mobile/es/utils/sleep";
+import "./index.less";
+import CollectGoods from "../../../components/CollectGoods/CollectGoods";
+const CollectVideos = () => <Empty />;
+const Empty = () => {
+  return (
+    <div className="nothing">
+      <img src={empty} alt="" />
+      <p>╮(╯﹏╰）╭再怎么找也没有啦</p>
+    </div>
+  );
+};
+
+const Other = () => {
+  return (
+    <div className="other">
+      <span>你可能还喜欢</span>
+      <p></p>
+    </div>
+  );
+};
+const index = memo(() => {
+  const [hasMore, setHasMore] = useState(true);
+  const [goodData, setGoodData] = useState([]);
+  const [count, setCount] = useState(0);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { goodsList, collectGoodsList, enterLoading } = useSelector(
+    (state) => ({
+      goodsList: state.favor.goodsList,
+      collectGoodsList: state.vip.collectGoodsList,
+      enterLoading: state.favor.enterLoading,
+    }),
+    shallowEqual
+  );
+  useEffect(() => {
+    dispatch(fetchFavorDataAction());
+  }, [dispatch]);
+  useEffect(() => {
+    fetchVipDataAction();
+  }, []);
+
+  async function mockRequest() {
+    if (count >= 5) return [];
+    await sleep(1000);
+    setCount((count) => count + 1);
+    return goodsList.map((item) => {
+      let id = item.id + Math.random() * 60;
+      if (count >= 1) {
+        return {
+          ...item,
+          id: id,
+        };
+      } else {
+        return { ...item };
+      }
+    });
+  }
+
+  async function loadMore() {
+    const append = await mockRequest();
+    setGoodData((val) => [...val, ...append]);
+    setHasMore(append.length > 0);
+  }
+
+  return (
+    <div className="collect-container">
+      <div className="header">
+        <i
+          className="iconfont icon-fanhuijiantou"
+          onClick={() => navigate(-1)}
+        />
+        <span>我的收藏</span>
+      </div>
+      <Tabs defaultActiveKey="goods">
+        <Tabs.Tab title="视频" key="videos">
+          <CollectVideos />
+          <Other />
+        </Tabs.Tab>
+        <Tabs.Tab title="商品" key="goods">
+          {collectGoodsList.length > 0 ? (
+            <>
+              {collectGoodsList.map((item) => (
+                <CollectGoods key={item.id} data={item} />
+              ))}
+            </>
+          ) : (
+            <Empty />
+          )}
+          <Other />
+          {enterLoading ? (
+            <Skeleton.Paragraph lineCount={20} animated />
+          ) : (
+            <>
+              <GoodsList goodData={goodData} />
+              <NewInfiniteScroll loadMore={loadMore} hasMore={hasMore} />
+            </>
+          )}
+          <ScrollToTop top={3000} />
+        </Tabs.Tab>
+      </Tabs>
+    </div>
+  );
+});
+
+export default index;

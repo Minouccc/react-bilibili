@@ -1,0 +1,95 @@
+.collect-container {
+  width: 100%;
+  background: rgb(241, 242, 244);
+  margin-top: 5rem;
+  min-height: 100vh;
+  padding-bottom: 0.5rem;
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 3rem;
+    background: rgb(75, 88, 192);
+    z-index: 99;
+    color: #fff;
+    i {
+      position: absolute;
+      top: 1rem;
+      left: 0.9rem;
+      font-size: 1rem;
+    }
+    span {
+      position: absolute;
+      left: 2.8rem;
+      font-size: 0.8rem;
+      line-height: 3rem;
+    }
+  }
+  .adm-tabs {
+    margin-top: 3.05rem;
+    background-color: #fff;
+    --active-line-color: rgb(255, 93, 146);
+  }
+  .adm-tabs-content {
+    padding: 0.1rem;
+    background: rgb(241, 242, 244);
+  }
+  .adm-tabs-tab-active {
+    color: #000;
+    font-weight: 500;
+  }
+  .adm-tabs-tab-list {
+    position: fixed;
+    top: 3rem;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 99;
+  }
+}
+.nothing {
+  position: relative;
+  width: 100%;
+  height: 13.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  img {
+    width: 12.5rem;
+    margin: 0 auto;
+  }
+  p {
+    font-size: 0.7rem;
+  }
+}
+.other {
+  position: relative;
+  width: 100%;
+  height: 1.3rem;
+  text-align: center;
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5.5rem;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    border-radius: 0.7rem;
+    font-size: 0.7rem;
+    background: rgba(227, 229, 231);
+    z-index: 10;
+  }
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 0.05rem;
+    background: #eee;
+  }
+}

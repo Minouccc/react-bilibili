@@ -18,6 +18,9 @@ const Mine = lazy(() => import("@/pages/Mine"));
 const VipSearch = lazy(() => import("@/pages/Vip/VipSearch/index.jsx"));
 const ShoppingCart = lazy(() => import("@/pages/Vip/ShoppingCart/index.jsx"));
 const GoodDetail = lazy(() => import("@/pages/Vip/GoodDetail"));
+const Collect = lazy(() => import("@/pages/Mine/Collect"));
+const Space = lazy(() => import("@/pages/Mine/Space"));
+const Wait = lazy(() => import("@/pages/Mine/Wait"));
 const RoutesConfig = () => {
   return (
     <Routes>
@@ -46,6 +49,9 @@ const RoutesConfig = () => {
       //会员购购物车
       <Route path="/vip/good/:id" element={<GoodDetail />}></Route>
       //会员购商品详情页
+      <Route path="/mine/space" element={<Space />}></Route> // 我的空间
+      <Route path="/mine/collect" element={<Collect />}></Route> // 我的收藏
+      <Route path="/mine/wait" element={<Wait />}></Route> // 稍后再看
     </Routes>
   );
 };

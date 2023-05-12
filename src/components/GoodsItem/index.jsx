@@ -6,7 +6,7 @@ import classnames from "classnames";
 import bilibili from "@/assets/images/bilibili.jpeg";
 import { Wrapper } from "./style";
 import { useDispatch } from "react-redux";
-import { addCartGoods, deleteCartGoods } from "../../store/modules/vip";
+import { addCollectGoods, deleteCollectGoods } from "../../store/modules/vip";
 
 const GoodsItem = (props) => {
   const { good } = props;
@@ -14,7 +14,7 @@ const GoodsItem = (props) => {
   const dispatch = useDispatch();
   const addColl = async (id) => {
     setIsLike(true);
-    await dispatch(addCartGoods(id));
+    await dispatch(addCollectGoods(id));
     Toast.show({
       content: "收藏成功",
       position: "bottom",
@@ -23,7 +23,7 @@ const GoodsItem = (props) => {
 
   const delColl = (id) => {
     setIsLike(false);
-    dispatch(deleteCartGoods(id));
+    dispatch(deleteCollectGoods(id));
   };
 
   return (

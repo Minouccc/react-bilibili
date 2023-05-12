@@ -30,7 +30,7 @@ const vipSlice = createSlice({
     changeGoodsList(state, { payload }) {
       state.goodsList = payload;
     },
-    addCartGoods(state, { payload }) {
+    addCollectGoods(state, { payload }) {
       let addGoodsList = state.collectGoodsList;
       state.goodsList.map((item) => {
         if (item.id === payload) {
@@ -41,12 +41,13 @@ const vipSlice = createSlice({
       });
       state.collectGoodsList = unique(addGoodsList);
     },
-    deleteCartGoods(state, { payload }) {
+    deleteCollectGoods(state, { payload }) {
       let deleteGoodsList = state.collectGoodsList.filter(
         (item) => item.id !== payload
       );
       state.collectGoodsList = deleteGoodsList;
     },
+
     changeLoading(state, { payload }) {
       state.enterLoading = payload;
     },
@@ -64,6 +65,12 @@ const vipSlice = createSlice({
       state.cartGoodsList = cartList;
     },
   },
+  deleteCartGoods(state, { payload }) {
+    let deleteGoodsList = state.collectGoodsList.filter(
+      (item) => item.id !== payload
+    );
+    state.collectGoodsList = deleteGoodsList;
+  },
 });
 export const {
   changeBannersList,
@@ -72,5 +79,7 @@ export const {
   changeLoading,
   changeGoodsList,
   getGoodDetail,
+  addCollectGoods,
+  deleteCollectGoods,
 } = vipSlice.actions;
 export default vipSlice.reducer;
