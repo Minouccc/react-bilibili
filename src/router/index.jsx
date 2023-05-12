@@ -11,6 +11,13 @@ const Campus = lazy(() => import("@/pages/Home/Campus"));
 const HomeSearch = lazy(() => import("@/pages/Home/HomeSearch"));
 const MailBox = lazy(() => import("@/pages/Home/MailBox"));
 
+const Dynamic = lazy(() => import("@/pages/Dynamic"));
+const Vip = lazy(() => import("@/pages/Vip"));
+const Mine = lazy(() => import("@/pages/Mine"));
+
+const VipSearch = lazy(() => import("@/pages/Vip/VipSearch/index.jsx"));
+const ShoppingCart = lazy(() => import("@/pages/Vip/ShoppingCart/index.jsx"));
+const GoodDetail = lazy(() => import("@/pages/Vip/GoodDetail"));
 const RoutesConfig = () => {
   return (
     <Routes>
@@ -30,6 +37,15 @@ const RoutesConfig = () => {
       </Route>
       <Route path="/home/search" element={<HomeSearch />} />
       <Route path="/home/mail-box" element={<MailBox />}></Route> // 首页邮箱
+      <Route path="/vip" element={<Vip />}></Route> // 会员购
+      <Route path="/dynamic" element={<Dynamic />}></Route> // 动态
+      <Route path="/mine" element={<Mine />}></Route> // 我的
+      <Route path="/vip/search" element={<VipSearch />}></Route>{" "}
+      //会员购搜索页面
+      <Route path="/vip/shopping-cart" element={<ShoppingCart />}></Route>{" "}
+      //会员购购物车
+      <Route path="/vip/good/:id" element={<GoodDetail />}></Route>
+      //会员购商品详情页
     </Routes>
   );
 };

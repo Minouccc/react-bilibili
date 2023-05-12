@@ -13,7 +13,7 @@ import {
   EnterLoading,
 } from "./style";
 import SearchBox from "@/components/common/search-box";
-import { fetchSearchAction } from "../../../store/modules/search";
+import { fetchSearchDataAction } from "../../../store/modules/search";
 import { changeEnterLoading } from "../../../store/modules/home";
 import { searchNull } from "@/config";
 import Loading from "../../../components/common/loading";
@@ -36,7 +36,7 @@ function HomeSearch() {
   useEffect(() => {
     if (query.trim()) {
       dispatch(changeEnterLoading(true));
-      dispatch(fetchSearchAction(query));
+      dispatch(fetchSearchDataAction(query));
     }
   }, [query]);
 

@@ -1,9 +1,9 @@
-import styled from 'styled-components'
-import style, { px2rem } from '@/assets/global-style'
+import styled from "styled-components";
+import style, { px2rem } from "@/assets/global-style";
 
 export const Wrapper = styled.div`
   width: 100%;
-`
+`;
 
 export const HeaderWrapper = styled.div`
   position: fixed;
@@ -28,7 +28,7 @@ export const HeaderWrapper = styled.div`
     margin-left: ${px2rem(50)};
     line-height: ${px2rem(60)};
   }
-`
+`;
 
 export const ImgTab = styled.div`
   width: 100%;
@@ -38,6 +38,7 @@ export const ImgTab = styled.div`
   justify-content: space-around;
   border-bottom: ${px2rem(1)} solid #eee;
   .img-tab {
+    text-align: center;
     width: ${px2rem(50)};
     height: ${px2rem(50)};
     img {
@@ -50,13 +51,13 @@ export const ImgTab = styled.div`
       color: #000;
     }
   }
-`
+`;
 
 export const Clearance = styled.div`
   width: 100%;
   height: ${px2rem(12)};
-  background: ${style['background-color']};
-`
+  background: ${style["background-color"]};
+`;
 
 export const List = styled.div`
   width: 100%;
@@ -71,4 +72,4 @@ export const List = styled.div`
     float: left;
     margin-left: ${px2rem(10)};
   }
-`
+`;

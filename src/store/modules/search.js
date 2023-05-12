@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getSuggestListRequest } from "../../api/request";
 
-export const fetchSearchAction = createAsyncThunk(
+export const fetchSearchDataAction = createAsyncThunk(
   "fetchdata",
   (query, { dispatch }) => {
     getSuggestListRequest().then((data) => {
